@@ -9,14 +9,14 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val viewModel: AlbumsViewModel by viewModels()
+   // private val viewModel: AlbumsViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel.downloadAlbumsViewModel()
-        viewModel.listOfAlbums.observe(this){
-            Log.d(TAG, it.toString())
-        }
+//        viewModel.downloadAlbumsViewModel()
+//        viewModel.listOfAlbums.observe(this){
+//            Log.d(TAG, it.toString())
+//        }
     }
 
     companion object {

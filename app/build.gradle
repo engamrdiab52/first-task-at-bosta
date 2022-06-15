@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 kapt {
     correctErrorTypes true
@@ -62,6 +65,12 @@ dependencies {
     //Hilt
     kapt "com.google.dagger:hilt-android-compiler:2.42"
     implementation "com.google.dagger:hilt-android:2.42"
+
+    // Kotlin  navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
+    //  - livedata
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0-rc01"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/albumsFragment">
+
+    <fragment
+        android:id="@+id/albumsFragment"
+        android:name="com.amrabdelhamiddiab.firsttaskatbosta.presentation.albumsScreen.AlbumsFragment"
+        android:label="fragment_albums"
+        tools:layout="@layout/fragment_albums" >
+        <action
+            android:id="@+id/action_albumsFragment_to_imagesFragment"
+            app:destination="@id/imagesFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/albumsFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/imagesFragment"
+        android:name="com.amrabdelhamiddiab.firsttaskatbosta.presentation.imagesScreen.ImagesFragment"
+        android:label="fragment_images"
+        tools:layout="@layout/fragment_images" />
+</navigation>
