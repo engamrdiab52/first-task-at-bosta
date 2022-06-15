@@ -40,7 +40,7 @@ class AlbumsFragment : Fragment() {
      }*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.downloadAlbumsViewModel()
+        //viewModel.downloadAlbumsViewModel()
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +59,7 @@ class AlbumsFragment : Fragment() {
         viewModel.cardClicked.observe(viewLifecycleOwner) {
             findNavController().navigate(R.id.action_albumsFragment_to_imagesFragment)
         }
+        viewModel.downloadAlbumsViewModel()
         return binding.root
     }
 

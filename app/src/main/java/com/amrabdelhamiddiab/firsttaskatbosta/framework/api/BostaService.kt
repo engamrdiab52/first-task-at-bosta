@@ -1,6 +1,7 @@
 package com.amrabdelhamiddiab.firsttaskatbosta.framework.api
 
 import com.amrabdelhamiddiab.core.data.Album
+import com.amrabdelhamiddiab.core.data.PhotoThum
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -9,6 +10,9 @@ import retrofit2.http.Query
 interface BostaService {
     @GET("albums")
     suspend fun fetchAlbumsOfSingleUser(@Query("userId") userId: Long): List<Album>?
+
+    @GET("photos")
+    suspend fun fetchImagesOfOneAlbum(@Query("albumId") albumId: Long): List<PhotoThum>
 
 
     companion object {

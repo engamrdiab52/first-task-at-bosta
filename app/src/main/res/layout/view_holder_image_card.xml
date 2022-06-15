@@ -8,36 +8,36 @@
             name="onClickContent"
             type="android.view.View.OnClickListener" />
         <variable
-            name="album"
-            type="com.amrabdelhamiddiab.core.data.Album" />
+            name="photo"
+            type="com.amrabdelhamiddiab.core.data.PhotoThum" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_categories"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_height="100dp"
+        android:layout_margin="1dp"
         android:onClick="@{onClickContent}"
         android:checkable="true"
         android:clickable="true"
         android:focusable="true"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
-        app:strokeWidth="1dp">
+        app:cardCornerRadius="1dp"
+        app:cardElevation="3dp"
+        app:strokeWidth="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="1dp">
 
-            <TextView
-                android:id="@+id/txt_view_image_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{album.title}"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
+            <ImageView
+                android:id="@+id/image_view"
+                app:imageUrl="@{photo.thumbnailUrl}"
+                android:scaleType="fitCenter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
