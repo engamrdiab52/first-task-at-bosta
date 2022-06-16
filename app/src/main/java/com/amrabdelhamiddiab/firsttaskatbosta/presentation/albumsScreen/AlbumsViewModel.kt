@@ -1,5 +1,6 @@
 package com.amrabdelhamiddiab.firsttaskatbosta.presentation.albumsScreen
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,6 +8,8 @@ import com.amrabdelhamiddiab.core.data.Album
 import com.amrabdelhamiddiab.core.data.PhotoThum
 import com.amrabdelhamiddiab.core.usecases.DownloadAlbums
 import com.amrabdelhamiddiab.core.usecases.DownloadImages
+import com.amrabdelhamiddiab.firsttaskatbosta.MainActivity
+import com.amrabdelhamiddiab.firsttaskatbosta.MainActivity.Companion.TAG
 import com.amrabdelhamiddiab.firsttaskatbosta.utilis.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -49,6 +52,20 @@ class AlbumsViewModel @Inject constructor(private val downloadAlbums: DownloadAl
             _downloading.postValue(true)
             _listOfPhots.postValue(downloadImages(albumId))
             _downloading.postValue(false)
+        }
+    }
+    fun search(query :String?, tempList: List<PhotoThum>){
+        viewModelScope.launch(Dispatchers.IO){
+            //  val listOfTempBags = listOfCategoryWomen.value
+            val filteredList = tempList.filter {
+                query?.let { it1 ->
+                    it.title?.contains(
+                        it1, true
+                    )
+                }!!
+            }
+            _listOfPhots.postValue(filteredList)
+            Log.d(TAG, filteredList.toString())
         }
     }
 }
