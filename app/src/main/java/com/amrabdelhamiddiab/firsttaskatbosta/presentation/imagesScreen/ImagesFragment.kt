@@ -1,5 +1,6 @@
 package com.amrabdelhamiddiab.firsttaskatbosta.presentation.imagesScreen
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import com.amrabdelhamiddiab.core.data.PhotoThum
 import com.amrabdelhamiddiab.firsttaskatbosta.MainActivity
 import com.amrabdelhamiddiab.firsttaskatbosta.MainActivity.Companion.TAG
 import com.amrabdelhamiddiab.firsttaskatbosta.R
+import com.amrabdelhamiddiab.firsttaskatbosta.ZoomActivity
 import com.amrabdelhamiddiab.firsttaskatbosta.databinding.FragmentImagesBinding
 import com.amrabdelhamiddiab.firsttaskatbosta.presentation.albumsScreen.AlbumsEpoxyController
 import com.amrabdelhamiddiab.firsttaskatbosta.presentation.albumsScreen.AlbumsViewModel
@@ -72,6 +74,13 @@ class ImagesFragment : Fragment() {
         binding.searchView.setOnQueryTextFocusChangeListener { _, p1 ->
             if (p1) {
                 tempList = viewModel.listOfPhots.value!!
+            }
+        }
+        viewModel.photo.observe(viewLifecycleOwner){
+            if (activity != null){
+                val intent =Intent (activity, ZoomActivity::class.java)
+                intent.putExtra("url", it?.url)
+                activity!!.startActivity(intent)
             }
         }
         return binding.root

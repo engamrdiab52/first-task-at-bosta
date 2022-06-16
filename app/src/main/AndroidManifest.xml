@@ -4,7 +4,8 @@
     package="com.amrabdelhamiddiab.firsttaskatbosta">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".BostaApplication"
         android:allowBackup="true"
@@ -16,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstTaskAtBosta"
         tools:targetApi="31">
+        <activity
+            android:name=".ZoomActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

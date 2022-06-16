@@ -19,7 +19,9 @@ class PhotosEpoxyController(private val albumsViewModel: AlbumsViewModel) :
             imageCard {
                 id(photo.id)
                 photo(photo)
-                Log.d(TAG,"PhotosEpoxyController22222222222222222222222222" + photo.thumbnailUrl )
+                onClickContent {
+                    _ -> this@PhotosEpoxyController.albumsViewModel.informImageClicked(photo)
+                }
             }
         }
     }

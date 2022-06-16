@@ -33,11 +33,19 @@ class AlbumsViewModel @Inject constructor(
     private val _album = SingleLiveEvent<Album?>()
     val album: LiveData<Album?> get() = _album
 
+    private val _photo = SingleLiveEvent<PhotoThum?>()
+    val photo: LiveData<PhotoThum?> get() = _photo
+
+
     private val _listOfPhots = SingleLiveEvent<List<PhotoThum>?>()
     val listOfPhots: LiveData<List<PhotoThum>?> get() = _listOfPhots
 
     private val _cardClicked = SingleLiveEvent<Boolean>()
     val cardClicked: LiveData<Boolean> get() = _cardClicked
+
+    private val _imageClicked = SingleLiveEvent<Boolean>()
+    val imageClicked: LiveData<Boolean> get() = _imageClicked
+
 
     private val _downloading = SingleLiveEvent<Boolean>()
     val downloading: LiveData<Boolean> get() = _downloading
@@ -51,6 +59,10 @@ class AlbumsViewModel @Inject constructor(
         _album.value = album
     }
 
+    fun informImageClicked(photoThum: PhotoThum) {
+        _imageClicked.value = true
+        _photo.value = photoThum
+    }
     fun downloadUserViewModel(userId: Long) {
         viewModelScope.launch(Dispatchers.IO) {
             _downloading.postValue(true)
