@@ -1,18 +1,16 @@
 package com.amrabdelhamiddiab.firsttaskatbosta.framework.di
 
-import com.amrabdelhamiddiab.core.domain.IDownloadAlbums
-import com.amrabdelhamiddiab.core.domain.IDownloadImages
-import com.amrabdelhamiddiab.core.domain.RepositoryDownloadAlbums
-import com.amrabdelhamiddiab.core.domain.RepositoryDownloadImages
+import com.amrabdelhamiddiab.core.domain.*
 import com.amrabdelhamiddiab.core.usecases.DownloadAlbums
 import com.amrabdelhamiddiab.core.usecases.DownloadImages
+import com.amrabdelhamiddiab.core.usecases.DownloadUser
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 class DownloadCoreModule {
 
     @Provides
@@ -34,4 +32,15 @@ class DownloadCoreModule {
     fun provideDownloadImagesUseCase(repositoryDownloadImages: RepositoryDownloadImages): DownloadImages {
         return DownloadImages(repositoryDownloadImages)
     }
+
+    @Provides
+    fun provideRepositoryUser(iDownloadUser: IDownloadUser): RepositoryUser {
+        return RepositoryUser(iDownloadUser)
+    }
+
+    @Provides
+    fun provideDownloadUserUseCase(repositoryUser: RepositoryUser): DownloadUser {
+        return DownloadUser(repositoryUser)
+    }
+
 }

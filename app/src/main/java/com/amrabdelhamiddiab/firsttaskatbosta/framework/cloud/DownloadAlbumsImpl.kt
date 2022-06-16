@@ -14,9 +14,9 @@ class DownloadAlbumsImpl @Inject constructor(private val bostaService: BostaServ
     private val _listOfAlbums: MutableList<Album> = mutableListOf()
     private val listOfAlbums: List<Album> = _listOfAlbums
 
-    override suspend fun downloadAlbums(): List<Album>? {
+    override suspend fun downloadAlbums(userId:Long): List<Album>? {
         return try {
-            bostaService.fetchAlbumsOfSingleUser((1..10).random().toLong())
+            bostaService.fetchAlbumsOfSingleUser(userId)
         } catch (e: Exception) {
             Log.d(TAG, e.message.toString())
             emptyList()

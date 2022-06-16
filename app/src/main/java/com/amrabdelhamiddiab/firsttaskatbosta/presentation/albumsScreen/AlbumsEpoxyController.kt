@@ -17,7 +17,7 @@ class AlbumsEpoxyController (private val albumsViewModel: AlbumsViewModel) :
                 id(album.id)
                 album(album)
                 onClickContent {
-                    _-> this@AlbumsEpoxyController.albumsViewModel.buttonClicked(album.id)
+                    _-> this@AlbumsEpoxyController.albumsViewModel.buttonClicked(album)
 
                 }
             }

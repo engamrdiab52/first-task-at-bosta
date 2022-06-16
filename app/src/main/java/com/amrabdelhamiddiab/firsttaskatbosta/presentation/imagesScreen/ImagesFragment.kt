@@ -1,5 +1,6 @@
 package com.amrabdelhamiddiab.firsttaskatbosta.presentation.imagesScreen
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -43,7 +44,7 @@ class ImagesFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(context, 3)
         viewModel.idOfAlbum.observe(viewLifecycleOwner) {
             viewModel.downloadPhotosViewModel(it)
-            // binding.textViewId.text = it.toString()
+             binding.textViewNameOfAlbum.text = it.toString()
         }
 
         viewModel.listOfPhots.observe(viewLifecycleOwner) {
@@ -52,6 +53,9 @@ class ImagesFragment : Fragment() {
             photosEpoxyController.setData(it)
             //  binding.textViewAlbumsFragment.text = it.toString()
             Log.d(TAG, it.toString())
+        }
+        viewModel.album.observe(viewLifecycleOwner){
+            binding.textViewNameOfAlbum.text = it?.title
         }
         binding.searchView.setOnQueryTextListener(object :
             android.widget.SearchView.OnQueryTextListener {
