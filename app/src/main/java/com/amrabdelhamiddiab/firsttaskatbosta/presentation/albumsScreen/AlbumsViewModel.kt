@@ -10,7 +10,6 @@ import com.amrabdelhamiddiab.core.data.User
 import com.amrabdelhamiddiab.core.usecases.DownloadAlbums
 import com.amrabdelhamiddiab.core.usecases.DownloadImages
 import com.amrabdelhamiddiab.core.usecases.DownloadUser
-import com.amrabdelhamiddiab.firsttaskatbosta.MainActivity
 import com.amrabdelhamiddiab.firsttaskatbosta.MainActivity.Companion.TAG
 import com.amrabdelhamiddiab.firsttaskatbosta.utilis.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -29,7 +29,6 @@ class ZoomActivity : AppCompatActivity() {
     private var shareIntent: Intent? = null
     private lateinit var shareActionProvider: androidx.appcompat.widget.ShareActionProvider
 
-    // private lateinit var shareActionProvider: ShareActionProvider
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityZoomBinding.inflate(layoutInflater)
@@ -48,15 +47,12 @@ class ZoomActivity : AppCompatActivity() {
                 imageView.setImageBitmap(resource)
                 prepareShareIntent(resource)
                 attachShareIntentAction()
-                // imageBitmap = resource
-
             }
 
         })
         binding.button2.setOnClickListener {
             startActivity(Intent.createChooser(shareIntent, "Share image"))
         }
-        //  binding.url = url
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
     }
@@ -64,7 +60,8 @@ class ZoomActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_zoom_activity, menu)
         val shareItem = menu.findItem(R.id.menu_item_share)
-        shareActionProvider =  MenuItemCompat.getActionProvider(shareItem) as androidx.appcompat.widget.ShareActionProvider
+        shareActionProvider =
+            MenuItemCompat.getActionProvider(shareItem) as androidx.appcompat.widget.ShareActionProvider
         attachShareIntentAction()
         return super.onCreateOptionsMenu(menu)
     }
@@ -81,15 +78,12 @@ class ZoomActivity : AppCompatActivity() {
         if (uri != null) {
             shareIntent = Intent(Intent.ACTION_SEND)
             shareIntent!!.putExtra(Intent.EXTRA_STREAM, uri).type = "image/*"
-            /*  if (shareActionProvider != null)
-                  shareActionProvider.setShareIntent(intent)*/
-            //  startActivity(Intent.createChooser(intent, "Share image"))
-
         } else {
-            Toast.makeText(this, "Error111111111111111", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "uri null", Toast.LENGTH_SHORT).show()
         }
 
     }
+
     private fun getContentUri(bitmap: Bitmap): Uri? {
         val imagesFolder = File(cacheDir, "images")
         var contentUri: Uri? = null
@@ -101,14 +95,18 @@ class ZoomActivity : AppCompatActivity() {
             stream.flush()
             stream.close()
             contentUri =
-                FileProvider.getUriForFile(this, "com.amrabdelhamiddiab.firsttaskatbosta.fileprovider", file)
+                FileProvider.getUriForFile(
+                    this,
+                    "com.amrabdelhamiddiab.firsttaskatbosta.fileprovider",
+                    file
+                )
 
         } catch (e: Exception) {
-            Toast.makeText(this, "Error222222222222222", Toast.LENGTH_SHORT).show()
-            Log.d("MA", e.message.toString() + "2222222222222222222222222222222222222222222")
+            Toast.makeText(this, "uri error", Toast.LENGTH_SHORT).show()
         }
         return contentUri
     }
+
     private fun attachShareIntentAction() {
         if (shareIntent != null)
             shareActionProvider.setShareIntent(shareIntent)

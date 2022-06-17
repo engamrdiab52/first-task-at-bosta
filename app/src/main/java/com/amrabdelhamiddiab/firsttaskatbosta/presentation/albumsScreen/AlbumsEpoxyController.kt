@@ -4,7 +4,6 @@ import com.airbnb.epoxy.EpoxyAsyncUtil
 import com.airbnb.epoxy.TypedEpoxyController
 import com.amrabdelhamiddiab.core.data.Album
 import com.amrabdelhamiddiab.firsttaskatbosta.albumNameCard
-import javax.inject.Inject
 
 class AlbumsEpoxyController (private val albumsViewModel: AlbumsViewModel) :
     TypedEpoxyController<List<Album>>(

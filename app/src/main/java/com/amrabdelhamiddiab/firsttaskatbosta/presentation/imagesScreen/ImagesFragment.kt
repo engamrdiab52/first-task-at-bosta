@@ -1,30 +1,23 @@
 package com.amrabdelhamiddiab.firsttaskatbosta.presentation.imagesScreen
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.amrabdelhamiddiab.core.data.PhotoThum
-import com.amrabdelhamiddiab.firsttaskatbosta.MainActivity
 import com.amrabdelhamiddiab.firsttaskatbosta.MainActivity.Companion.TAG
 import com.amrabdelhamiddiab.firsttaskatbosta.R
 import com.amrabdelhamiddiab.firsttaskatbosta.ZoomActivity
 import com.amrabdelhamiddiab.firsttaskatbosta.databinding.FragmentImagesBinding
-import com.amrabdelhamiddiab.firsttaskatbosta.presentation.albumsScreen.AlbumsEpoxyController
 import com.amrabdelhamiddiab.firsttaskatbosta.presentation.albumsScreen.AlbumsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.lifecycle.HiltViewModel
 
 @AndroidEntryPoint
 class ImagesFragment : Fragment() {
